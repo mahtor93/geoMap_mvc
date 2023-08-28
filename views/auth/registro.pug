@@ -1,0 +1,28 @@
+extends ../layout/index
+
+block contenido
+
+    .mt-8.mx-auto.max-w-md
+        .bg-white.py-5.px-4.shadow
+            form.space-y-3(method="POST" action='/auth/registro' noValidate)
+                
+                div
+                    label.block.text-sm.text-gray-600.mb-2.font-bold(for="nombre") Tu Nombre
+                    input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(placeholder='Ingresa tu nombre' type='text' name='nombre' value=usuario?usuario.nombre:'')
+                div
+                    label.block.text-sm.text-gray-600.mb-2.font-bold(for="email") Tu Correo
+                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(placeholder='Ingresa tu correo' type='email' name='email' value= usuario ? usuario.email: '')
+                div
+                    label.block.text-sm.text-gray-600.mb-2.font-bold(for="password") Tu Password
+                    input#password.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(placeholder='Ingresa un password' type='password' name='password')
+                div
+                    label.block.text-sm.text-gray-600.mb-2.font-bold(for="repetir_password") repite tu password
+                    input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(placeholder='Repite tu password' type='password' name='repetir_password')
+                
+                div.flex.items-center.justify-between
+                    a.text-gray-500.text-xs(href="/auth/login") ¿Ya tienes Cuenta? Inicia sesión.
+                    a.text-gray-500.text-xs(href="/auth/olvide-password") Olvidé mi password
+                input(type='hidden' name='_csrf' value= csrfToken)
+                input(class='w-full bg-indigo-600 py-2 hover:bg-indigo-800 rounded-xl text-white font-bold' type='submit' value='Crear Cuenta')
+
+
